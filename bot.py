@@ -1,27 +1,28 @@
 import json
 import requests
 
-FACEBOOK_GRAPH_URL = "https://graph.facebook.com/v3.3/me/messages"
+FACEBOOK_GRAPH_URL = "https://graph.facebook.com/v3.3/me/"
 
 
 class Bot(object):
     """docstring for Bot"""
 
-    def __init__(self, access_token, url_fb=FACEBOOK_GRAPH_URL):
+    def __init__(self, access_token, api_url=FACEBOOK_GRAPH_URL):
         self.access_token = access_token
-        self.url_fb = url_fb
+        self.api_url = api_url
 
-    def send_text_message(self, psid, message, messaging_type="RESPONSE"):
+    def send_text_message(self, PSID, message, messaging_type="RESPONSE"):
         headers = {
             'Content-Type': 'application/json'
         }
         data = {
             'messaging_type': messaging_type,
-            'recipient': {'id': psid},
+            'recipient': {'id': PSID},
             'message': {'text': message}
         }
         params = {'access_token': self.access_token}
-        response = requests.post(self.url_fb,
+        self.api_url = self.api_url + 'messages'
+        response = requests.post(self.api_url,
                                  headers=headers,
                                  params=params,
                                  data=json.dumps(data))
