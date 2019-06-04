@@ -1,15 +1,20 @@
 import os
 import sys
 from flask import Flask, request
+from pymessenger import Bot
+from accessing import PAGE_ACCESS_TOKEN, VERIFY_TOKEN
 
 app = Flask(__name__)
+
+
+chatbottest = Bot(PAGE_ACCESS_TOKEN)
 
 
 @app.route('/', methods=['GET'])
 def verify():
     # Webhook verification in this
     if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.challenge'):
-        if not request.args.get('hub.verify_token') == 'n5T5yzuZWTaK/oE0+1spNcNEKBrmcd6vPvHBAJSNTE0=':
+        if not request.args.get('hub.verify_token') == VERIFY_TOKEN:
             return "Verification taken mismatch", 403
         return request.args['hub.challenge'], 200
     return "Hello World", 200
@@ -29,7 +34,13 @@ def webhook():
                 recipient_id = messaging['recipient']['id']
                 # get the message
                 if messaging.get('message'):
-                    if 'text' in messaging['']
+                    if 'text' in messaging['message']:
+                        messagging_text = messaging['message']['text']
+                    else:
+                        messagging_text = 'no text for this.'
+                    # Echo
+                    response = messaging_text
+                    bot.send_text_message(sender_id, response)
 
     return 'OK, man', 200
 
