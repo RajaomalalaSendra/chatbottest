@@ -20,6 +20,17 @@ def webhook():
     # webhook function for our app
     data = request.get_json()
     log(data)
+
+    if data['object'] == 'page':
+        for entry in data['entry']:
+            for messaging in entry['messaging']:
+                # Get all the IDs
+                sender_id = messaging['sender']['id']
+                recipient_id = messaging['recipient']['id']
+                # get the message
+                if messaging.get('message'):
+                    if 'text' in messaging['']
+
     return 'OK, man', 200
 
 
@@ -28,4 +39,4 @@ def log(data):
     sys.stdout.flush()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=80)
+    app.run(debug=True, port=5000)
