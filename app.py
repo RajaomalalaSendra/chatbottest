@@ -19,6 +19,7 @@ def webhook():
         return "400"
     else:
         data = json.loads(request.data)
+        print(data)
         messaging_events = data['entry'][0]['messaging']
         bot = Bot(PAGE_ACCESS_TOKEN)
         for message in messaging_events:
@@ -35,8 +36,12 @@ def webhook():
                 answer = "here is all the information about bfv..."
             elif text_input in bot_answer.urgence():
                 answer = "This is an urgence from you as a user..."
-            elif text_input in bot_answer.operation():
+            elif text_input in bot_answer.reclamation():
                 answer = "This is the operation inside the bfv..."
+            elif text_input in bot_answer.help():
+                answer = 'This is the help for you....'
+            elif text_input in bot_answer.emoji():
+                answer = ':-)'
             bot.send_text_message(user_id, answer)
         return '200'
 

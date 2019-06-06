@@ -10,7 +10,7 @@ class Answer():
         return CONTACT
 
     def tarif(self):
-        TARIF = ['connaitre le tarif de BFV', 'le tarif', 'le tarif bfv']
+        TARIF = ['connaitre le tarif de BFV', 'le tarif', 'le tarif bfv', 'tarif de bfv', 'tarif de bfvsg']
         return TARIF
 
     def information(self):
@@ -25,5 +25,9 @@ class Answer():
         RECLAM = ['banque a distance', 'couriers bancaires', 'operations courantes', 'operation', 'operations internationales']
         return RECLAM
 
-bot = Answer()
-print(bot.contact())
+    def help(self):
+        HELP = ['help', 'aide', 'can you help me?', 'help me please?', 'vonjeo']
+        return HELP
+
+    def emoji(self):
+        EMOJI = [':-)', ':)']
