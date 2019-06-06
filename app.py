@@ -42,6 +42,8 @@ def webhook():
                 answer = 'This is the help for you....'
             elif text_input in bot_answer.emoji():
                 answer = ':-)'
+            elif text_input in bot_answer.thumb():
+                answer = '👍'
             bot.send_text_message(user_id, answer)
         return '200'
 

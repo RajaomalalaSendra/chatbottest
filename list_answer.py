@@ -30,4 +30,9 @@ class Answer():
         return HELP
 
     def emoji(self):
-        EMOJI = [':-)', ':)']
+        EMOJI = [':-)', ':)', '😀', ';)', ';-)']
+        return EMOJI
+
+    def thumb(self):
+        THUMB = ['👍']
+        return THUMB
