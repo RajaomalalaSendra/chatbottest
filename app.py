@@ -1,5 +1,5 @@
 import json
-from flask import Flask, request
+from flask import Flask, request, render_template
 from bot import Bot
 from accessing import PAGE_ACCESS_TOKEN, VERIFY_TOKEN
 from list_answer import Answer
@@ -47,5 +47,9 @@ def webhook():
             bot.send_text_message(user_id, answer)
         return '200'
 
+
+@app.route('/chatbot')
+def chatbot():
+    return render_template("chatbot.html")
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,49 @@
+<!-- Load Facebook SDK for JavaScript -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test chatbot</title>
+</head>
+<body>
+<div id="fb-root"></div>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat" 
+  minimized="true" 
+  attribution=setup_tool
+  page_id="1846484152119525"
+  theme_color="#fa3c4c"
+  logged_in_greeting="Hi! How can we help you?"
+  logged_out_greeting="Hi! How can we help you?">
+</div>
+
+<!-- <style>
+  #fb-root > div.fb_dialog.fb_dialog_advanced.fb_shrink_active {
+     right: initial !important;
+     left: 18pt;
+     z-index: 9999999 !important;
+  }
+  .fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {
+     right: initial !important;
+     left: 18pt !important;
+  }
+</style> -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v3.3'
+    });
+  };
+
+  (function(d, s, id) {
+    console.log("here")
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
+</html>
